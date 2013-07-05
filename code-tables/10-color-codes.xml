@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code-table>
+    <!-- lighter pallet colors for module backgrounds in a graph cluster -->
+    <name>10-light-colors</name>
+    <item>
+        <label>Pink</label>
+        <value>pink</value>
+    </item>
+    <item>
+        <label>Orange</label>
+        <value>orange</value>
+    </item>
+    <item>
+        <label>Yellow</label>
+        <value>yellow</value>
+    </item>
+    <item>
+        <label>Green</label>
+        <value>lightgreen</value>
+    </item>
+    <item>
+        <label>Blue</label>
+        <value>lightblue</value>
+    </item>
+    <item>
+        <label>Thistle</label>
+        <value>thistle</value>
+    </item>
+    <item>
+        <label>Violet</label>
+        <value>tan</value>
+    </item>
+    <item>
+        <label>Kahki</label>
+        <value>khaki</value>
+    </item>
+    <item>
+        <label>Gray</label>
+        <value>#DDD</value>
+    </item>
+    <item>
+        <label>Tan</label>
+        <value>tan</value>
+    </item>
+</code-table>

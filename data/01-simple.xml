@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<callgraph>
+    <desc>An example of a call graph in the format that we expect from the inspect:module() function</desc>
+    <!-- this is hand generated for testing the graph to ml transform -->
+    <module uri="http://example.com/my-module" prefix="m" location="/db/apps/callgraph/modules/my-module.xqm">
+        <function name="m:a" module="http://example.com/my-module">
+            <calls>
+                <function name="m:b" module="http://example.com/my-module" arity="1"/>
+                <function name="m:c" module="http://example.com/my-module" arity="1"/>
+            </calls>
+        </function>
+        <function name="m:a" module="http://example.com/my-module"/>
+        <function name="m:b" module="http://example.com/my-module"/>
+    </module>
+</callgraph>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module uri="http://docbook.org/ns/docbook" prefix="docbook" location="/db/apps/doc/modules/docbook.xql">
+    <variable name="docbook:INLINE"/>
+    <function name="docbook:load" module="http://docbook.org/ns/docbook">
+        <argument type="node()" cardinality="exactly one" var="node"/>
+        <argument type="map" cardinality="exactly one" var="model"/>
+        <argument type="xs:string" cardinality="zero or one" var="q"/>
+        <argument type="xs:string" cardinality="zero or one" var="doc"/>
+        <argument type="xs:string" cardinality="exactly one" var="field"/>
+        <returns type="item()" cardinality="zero or more"/>
+        <annotation name="public" namespace="http://www.w3.org/2005/xpath-functions"/>
+        <annotation name="templates:default" namespace="http://exist-db.org/xquery/templates">
+            <value>field</value>
+            <value>all</value>
+        </annotation>
+        <description> Load a docbook document. If a query was specified, re-run the query on the document to get matches highlighted.</description>
+        <calls>
+            <function name="dq:do-query" module="http://exist-db.org/xquery/documentation/search" arity="3"/>
+        </calls>
+    </function>
+    <function name="docbook:to-html" module="http://docbook.org/ns/docbook">
+        <argument type="node()" cardinality="exactly one" var="node"/>
+        <argument type="map" cardinality="exactly one" var="model"/>
+        <returns type="item()" cardinality="zero or more"/>
+        <annotation name="public" namespace="http://www.w3.org/2005/xpath-functions"/>
+        <description> Transform the docbook fragment given in $model.</description>
+        <calls>
+            <function name="docbook:to-html" module="http://docbook.org/ns/docbook" arity="1"/>
+        </calls>
+    </function>
+    <function name="docbook:toc" module="http://docbook.org/ns/docbook">
+        <argument type="node()" cardinality="exactly one" var="node"/>
+        <argument type="map" cardinality="exactly one" var="model"/>
+        <returns type="item()" cardinality="zero or more"/>
+        <annotation name="public" namespace="http://www.w3.org/2005/xpath-functions"/>
+        <description> Generate a table of contents.</description>
+        <calls>
+            <function name="docbook:print-sections" module="http://docbook.org/ns/docbook" arity="1"/>
+        </calls>
+    </function>
+</module>

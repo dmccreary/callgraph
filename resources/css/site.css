@@ -1,0 +1,93 @@
+body {
+   background-color: #555; /* page background light gray is #DDD dark gray is #555 */ 
+   font-family: arial, helvetica, sans-serif;
+   }
+
+/* for table headers within a repeat */
+table.repeat {border-collapse: collapse}
+table.repeat thead tr {background-color: silver; border: solid black 1px;}
+table.repeat thead tr th {border: solid gray 1px;}
+
+#banner {
+    font-size: 10pt;
+}
+
+#banner-search  {
+  /* border: solid blue 1px; */
+  }
+  
+#banner-form-search {
+    display: inline;
+    margin-left: 30px;
+  }
+  
+#banner-form-search input {
+  /* border: solid blue 1px; */
+  font-size: 10pt;
+  }
+#footer {
+    clear: both;
+}
+
+.layout-vertical {
+    /*border: solid red 1px; */
+    margin: 5px;
+}
+
+/* container is the main part of the form */
+.container {
+    background-color: white;
+    border: solid blue 1px;
+    padding-left: 10px;
+    padding-right: 20px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.debug {background: khaki;}
+.warn {background: pink}
+
+.layout-vertical, .layout-horizontal {
+    border: solid silver 1px;
+}
+
+/* within a vertical layout, all form controls are on a seperate line */
+.layout-vertical .xforms-control {
+    display: block;
+    /* the spacing between the controls */
+    padding: 4px;
+    /* border: solid green 1px; */
+}
+
+.xforms-label {
+   font-weight: bold;
+   font-size: 11pt;
+   /* alternatives are black, gray or a hex code #222 */
+   color: DimGray;
+}
+
+/* Color current item yellow. */
+.xforms-repeat-item-selected {background-color: LightGreen;}
+
+.layout-vertical .xforms-control .xforms-label {
+    /* this may not work in older browsers, but the only way to adjust the width of an inline region*/
+    display: inline-block;
+    text-align: right;
+    min-width: 15ex;
+    /*  border: solid green 1px; */
+}
+
+.xforms-value {
+    margin-left: 2px;
+    padding-left: 2px;
+}
+
+.xforms-required .xforms-value {
+    /* some use yellow, I like khaki, it is a bit softterm LightYellow or  PeachPuff, Moccasin */
+    background-color: Moccasin;
+    border: solid black 1px;
+}
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+    <cluster id="mod-1" bgcolor="pink" label="http://danmccreary.com/a">
+        <node id="a:a"/>
+        <node id="a:b"/>
+        <node id="a:c"/>
+        <node id="a:d"/>
+        <edge source="a:a" target="a:c"/>
+        <edge source="a:a" target="a:b"/>
+        <edge source="a:c" target="a:d"/>
+    </cluster>
+</graphml>

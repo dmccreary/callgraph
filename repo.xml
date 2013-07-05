@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>A tool for building XQuery module call graph diagrams</description>
+    <author>Dan McCreary</author>
+    <website>https://github.com/dmccreary/callgraph</website>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>callgraph</target>
+    <prepare/>
+    <finish/>
+</meta>
