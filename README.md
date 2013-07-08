@@ -18,3 +18,7 @@ The current version only works on a single module.
 For more information, see the wikibook here:
 
 http://en.wikibooks.org/wiki/XQuery/Call_Graphs
+
+Special thanks to Chris Wallace for his work on the GraphViz XQuery module.
+
+Note that getting the transformation chain to work requires Graphviz to be installed as a shell command.
