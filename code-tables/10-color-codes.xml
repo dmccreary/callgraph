@@ -3,6 +3,10 @@
     <!-- lighter pallet colors for module backgrounds in a graph cluster -->
     <name>10-light-colors</name>
     <item>
+        <label>Light Gray</label>
+        <value>Gainsboro</value>
+    </item>
+    <item>
         <label>Pink</label>
         <value>pink</value>
     </item>
@@ -35,11 +39,23 @@
         <value>khaki</value>
     </item>
     <item>
-        <label>Gray</label>
-        <value>#DDD</value>
+        <label>Silver</label>
+        <value>silver</value>
     </item>
     <item>
         <label>Tan</label>
         <value>tan</value>
+    </item>
+    <item>
+        <label>Light Cyan</label>
+        <value>lightcyan</value>
+    </item>
+    <item>
+        <label>Beige</label>
+        <value>beige</value>
+    </item>
+    <item>
+        <label>Lavender</label>
+        <value>Lavender</value>
     </item>
 </code-table>

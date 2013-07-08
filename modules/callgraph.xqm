@@ -74,7 +74,7 @@ return
             </cluster>
          else (: Note: we are now in the graphml namespace so we need to use *: to get the the null namespace :)
          <graph xmlns="http://www.martin-loetzsch.de/DOTML" rankdir="LR">
-                <cluster id="mod_{$module-count}" bgcolor="{$color-for-nth-module}" label="{$module/@uri}">
+                <cluster id="mod_{$module-count}" bgcolor="white" label="{$module/@uri}">
                     {callgraph:functions-for-module($module/*:function)}
                     {callgraph:calls-for-module($module//*:calls)}
                  </cluster>
@@ -83,10 +83,12 @@ return
 
 (: for each function in a module, add a node :)
 declare function callgraph:functions-for-module($functions as node()*) as node()* {
-   for $function in $functions
+   for $function at $count in $functions
    let $clean-name := replace($function/@name/string(), '-', '_')
+   let $color-for-nth-node := callgraph:nth-color($count)
    return
-      <node  xmlns="http://www.martin-loetzsch.de/DOTML"  id="{replace($clean-name, ':', '_')}" label="{$function/@name/string()}"/>
+      <node  xmlns="http://www.martin-loetzsch.de/DOTML"  id="{replace($clean-name, ':', '_')}" label="{$function/@name/string()}"
+      style="filled" fillcolor="{$color-for-nth-node}"/>
 };
 
 declare function callgraph:calls-for-module($calls as node()*) as node()* {
