@@ -3,7 +3,7 @@ import module namespace cgu = "http://danmccreary.com/callgraph-util" at "../mod
 
 let $title := 'List Call Graph Examples'
 
-let $all-examples := $cgu:all-examples
+let $all-examples := $cgu:all-file-names
 
 let $content :=
 <div class="content">
@@ -12,25 +12,27 @@ let $content :=
          <tr>
             <th>File Name</th>
             <th>Last Modified</th>
-            <th>View</th>
+            <th>Inspect</th>
+            <th>GraphML</th>
+            <th>Dot</th>
             <th>SVG</th>
-            <th>Edit</th>
          </tr>
       </thead>
       <tbody>
-        {for $tree in $all-examples
-         let $document-name := util:document-name($tree)
-         let $id := $document-name
-         let $last-modified := xmldb:last-modified($style:db-path-to-app-data, $document-name)
+        {for $file-name in $all-examples
+         let $id := $file-name
+         let $suffix := substring-after($file-name, '.')
+         let $last-modified := xmldb:last-modified($style:db-path-to-app-data, $file-name)
          return
             <tr>
                <th>
                    <a href="../data/{$id}">{$id}</a>
                  </th>
-               <td>{$last-modified}</td>
-               <th><a href="view-tree.xq?id={$id}">View</a></th>
-               <th><a href="view-tree-svg.xq?id={$id}">SVG</a></th>
-               <th><a href="../edit/edit.xq?id={$id}">Edit</a></th>
+               <td>{format-dateTime($last-modified, '[M]/[D]/[Y] [H24]:[m]:[s]')}</td>
+               <th><a href="module-to-inspect.xq?file-name={$id}">Inspect</a></th>
+               <th><a href="module-to-graphml.xq?file-name={$id}">GraphML</a></th>
+               <th><a href="module-to-dot.xq?file-name={$id}">Dot</a></th>
+               <th><a href="module-to-svg.xq?file-name={$id}">SVG</a></th>
             </tr>
          }
        </tbody>

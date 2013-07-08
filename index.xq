@@ -1,5 +1,5 @@
 import module namespace style = "http://danmccreary.com/style" at "modules/style.xqm";
-let $title := 'Quality Attribute Utility Tree'
+let $title := 'XQuery Callgraph System'
 
 let $content :=
 <div class="content">

@@ -21,16 +21,13 @@ input format
 ...
 
 into
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
-     http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<graph xmlns="http://www.martin-loetzsch.de/DOTML" rankdir="LR">
   <graph id="G" edgedefault="undirected">
     <node id="n0"/>
     <node id="n1"/>
-    <edge id="e1" source="n0" target="n1"/>
+    <edge id="e1" from="n0" to="n1"/>
   </graph>
-</graphml>
+</graph>
 :)
 
 declare namespace gml="http://graphml.graphdrawing.org/xmlns";
@@ -49,22 +46,20 @@ declare function callgraph:main($nodes as node()*) {
 };
 
 declare function callgraph:modules($node as node()) {
-<graphml xmlns="http://www.martin-loetzsch.de/DOTML"  
+<graph xmlns="http://www.martin-loetzsch.de/DOTML"  
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
      http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
    {callgraph:main($node/*)}
-</graphml>
+</graph>
 };
 
 declare function callgraph:function($node as node()) {
-<node id="{$node/@name/string()}">
-   {callgraph:main($node/*)}
-</node>
+<node id="{$node/@name/string()}"/>
 };
 
 declare function callgraph:calls($node as node()) {
-<edge id="e1" source="{$node/@name/string()}" target="{$node/function/@name/string()}"/>
+<edge id="e1" from="{$node/@name/string()}" to="{$node/function/@name/string()}"/>
 };
 
 declare function callgraph:module($module as node()) as node(){
@@ -73,32 +68,37 @@ let $color-for-nth-module := callgraph:nth-color($module-count)
 return
     if (name($module/..) = 'modules')
         then
-            <cluster id="mod-{$module-count}" bgcolor="{$color-for-nth-module}"  xmlns="http://www.martin-loetzsch.de/DOTML">
+            <cluster id="mod{$module-count}" bgcolor="{$color-for-nth-module}"  xmlns="http://www.martin-loetzsch.de/DOTML">
                {callgraph:functions-for-module($module/function)}
                {callgraph:calls-for-module($module//calls)}
             </cluster>
          else (: Note: we are now in the graphml namespace so we need to use *: to get the the null namespace :)
-         <graphml xmlns="http://www.martin-loetzsch.de/DOTML">
-                <cluster id="mod-{$module-count}" bgcolor="{$color-for-nth-module}" label="{$module/@uri}">
+         <graph xmlns="http://www.martin-loetzsch.de/DOTML" rankdir="LR">
+                <cluster id="mod_{$module-count}" bgcolor="{$color-for-nth-module}" label="{$module/@uri}">
                     {callgraph:functions-for-module($module/*:function)}
                     {callgraph:calls-for-module($module//*:calls)}
                  </cluster>
-          </graphml>
+          </graph>
 };
 
 (: for each function in a module, add a node :)
 declare function callgraph:functions-for-module($functions as node()*) as node()* {
    for $function in $functions
+   let $clean-name := replace($function/@name/string(), '-', '_')
    return
-      <node  xmlns="http://www.martin-loetzsch.de/DOTML"  id="{$function/@name/string()}"/>
+      <node  xmlns="http://www.martin-loetzsch.de/DOTML"  id="{replace($clean-name, ':', '_')}" label="{$function/@name/string()}"/>
 };
 
 declare function callgraph:calls-for-module($calls as node()*) as node()* {
    for $function in $calls/function
+   let $clean-from-name1 := replace($function/../../@name/string(), '-', '_')
+   let $clean-from-name2 := replace($clean-from-name1, ':', '_')
+   let $clean-to-name1 := replace($function/@name/string(), '-', '_')
+   let $clean-to-name2 := replace($clean-to-name1, ':', '_')
    return
       <edge xmlns="http://www.martin-loetzsch.de/DOTML" 
-         source="{$function/../../@name/string()}"
-         target="{$function/@name/string()}"/>
+         from="{$clean-from-name2}"
+         to="{$clean-to-name2}"/>
 };
 
 declare function callgraph:nth-color($n as xs:integer) as xs:string? {

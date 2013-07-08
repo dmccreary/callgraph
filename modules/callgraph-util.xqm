@@ -16,6 +16,7 @@ declare variable $cgu:default-config := doc($cgu:default-config-path)/conf;
 declare variable $cgu:xunit-test-verbose := xs:boolean($cgu:default-config//xunit-test-verbose);
 
 declare variable $cgu:all-examples := collection($cgu:data-collection)/*;
+declare variable $cgu:all-file-names := xmldb:get-child-resources($cgu:data-collection);
 
 declare function cgu:tree($id as xs:string) {
 $cgu:all-trees[id=$id]

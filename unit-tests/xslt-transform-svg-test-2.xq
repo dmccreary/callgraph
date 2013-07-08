@@ -6,25 +6,34 @@ declare option exist:serialize "method=xhtml media-type=application/xhtml+xml";
 let $input :=
 <graph xmlns="http://www.martin-loetzsch.de/DOTML">
     <cluster id="m1" bgcolor="pink" label="http://danmccreary.com/module-a">
-        <node id="a"/>
-        <node id="b"/>
-        <node id="c"/>
+        <node id="a" label="a:a"/>
+        <node id="b"  label="a:b"/>
+        <node id="c"  label="a:c"/>
         <edge from="a" to="b"/>
         <edge from="a" to="c"/>
     </cluster>
-    <cluster id="m2" bgcolor="tan" label="http://danmccreary.com/module-b">
+</graph>
+
+let $input2 :=
+<graph xmlns="http://www.martin-loetzsch.de/DOTML">
+    <cluster id="mod1" bgcolor="pink" label="http://danmccreary.com/a">
+        <node id="a"/>
+        <node id="b"/>
+        <node id="c"/>
         <node id="d"/>
-        <node id="e"/>
-        <node id="f"/>
-        <edge from="d" to="e"/>
-        <edge from="d" to="f"/>
+        <edge from="a" to="c"/>
+        <edge from="a" to="b"/>
+        <edge from="c" to="d"/>
     </cluster>
-    <edge from="c" to="d"/>
 </graph>
 
 let $output := gv:dotml-to-dot($input)
 let $svg := gv:dot-to-svg($output)
+
+let $output2 := gv:dotml-to-dot($input2)
+let $svg2 := gv:dot-to-svg($output2)
 return
 <html xmlns ="http://www.w3.org/1999/xhtml">
   {$svg}
+  {$svg2}
 </html>
