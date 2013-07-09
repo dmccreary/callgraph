@@ -38,8 +38,8 @@ declare variable $style:db-path-to-app-data := concat($style:app-home, '/data');
 
 declare variable $style:web-path-to-site := $style:app-home;
 declare variable $style:site-dashboard := concat($style:context, '/apps/dashboard/index.html');
-declare variable $style:web-path-to-app := concat($style:context, 'apps/', $style:app-id, '/index.xq');
-declare variable $style:app-home-page := concat($style:context, '/apps/', $style:app-id, '/index.xq');
+declare variable $style:web-path-to-app := concat($style:context, 'apps/', $style:app-id);
+declare variable $style:app-home-page := concat($style:web-path-to-app, '/index.xq');
 
 
 (: full rest path for CSS and image :)
@@ -111,7 +111,7 @@ declare function style:breadcrumbs($suffix as node()*) as node() {
       
       {if (style:web-depth-in-site() > 2) then
       (' &gt; ',
-      <a href="{$style:site-dashboard}/apps/{$style:app-id}/index.xq">{$style:app-name}</a>
+      <a href="{$style:context}/apps/{$style:app-id}/views/list-items.xq">List Examples</a>
       )
       else ()}
       
