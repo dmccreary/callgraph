@@ -12,6 +12,10 @@ table.repeat thead tr th {border: solid gray 1px;}
     font-size: 10pt;
 }
 
+#banner-header-text {
+    margin: 10px;
+    font-size: 16px;
+}
 #banner-search  {
   /* border: solid blue 1px; */
   }

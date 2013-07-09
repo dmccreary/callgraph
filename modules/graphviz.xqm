@@ -46,7 +46,7 @@ declare function gv:dot-to-svg($graph) {
          <workingDir>{$gv:conf/directory/string()}</workingDir>
          <stdin><line>{$graph}</line></stdin>
       </options>
-     let $result := process:execute(($gv:conf/dot-path,"-Tsvg"), $options)
+     let $result := system:as-user($gv:conf/dba-user, $gv:conf/dba-password, process:execute(($gv:conf/dot-path,"-Tsvg"), $options))
      let $lines := $result/stdout/line
      let $error := gv:dot-error($lines)
      return 

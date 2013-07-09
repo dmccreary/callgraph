@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <conf>
     <!-- directory in which graphviz will be executed and temprory files stored-->
     <directory/> 
-    <!-- dot command - for windows use {path}/dot.exe -->
-    <dot-path>D:\Apps\graphviz\bin\dot.exe</dot-path>
+    <!-- dot command - for windows use {path}\dot.exe such as C:\apps\dot\bin\dot.exe
+         for unix try /usr/local/bin/dot -->
+    <dot-path>/usr/local/bin/dot</dot-path>
     <!-- relative path to dotmltodotxsl -->
     <dotml2dot>modules/dotml2dot.xsl</dotml2dot>
     <xunit-test-verbose>true</xunit-test-verbose>
+    <!-- the execute process command needs this information to run as a DBA user -->
+    <dba-user>admin</dba-user>
+    <dba-password></dba-password>
 </conf>

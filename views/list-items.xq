@@ -3,7 +3,7 @@ import module namespace cgu = "http://danmccreary.com/callgraph-util" at "../mod
 
 let $title := 'List Call Graph Examples'
 
-let $all-examples := $cgu:all-file-names
+let $all-examples := $cgu:all-file-names[ends-with(., '.xqm')]
 
 let $content :=
 <div class="content">

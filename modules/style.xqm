@@ -10,6 +10,7 @@ declare namespace xf="http://www.w3.org/2002/xforms";
 declare namespace xrx="http://code.google.com/p/xrx";
 declare namespace repo="http://exist-db.org/xquery/repo";
 
+declare variable $style:app-name := 'Call Graph';
 declare variable $style:app-id := 'callgraph';
 declare variable $style:app-home := concat('/db/apps/', $style:app-id);
 declare variable $style:repo-file-path := concat($style:app-home, '/repo.xml');
@@ -40,14 +41,14 @@ declare variable $style:site-dashboard := concat($style:context, '/apps/dashboar
 declare variable $style:web-path-to-app := concat($style:context, 'apps/', $style:app-id, '/index.xq');
 declare variable $style:app-home-page := concat($style:context, '/apps/', $style:app-id, '/index.xq');
 
-declare variable $style:app-name := 'Call Graph';
 
+(: full rest path for CSS and image :)
 declare variable $style:site-resources := concat($style:rest-path-to-app, '/resources');
 declare variable $style:rest-path-to-style-resources := concat($style:rest-path-to-app, '/resources');
 declare variable $style:site-images := concat($style:site-resources, '/images');
 declare variable $style:site-scripts := concat($style:site-resources, '/js');
 declare variable $style:site-css := concat($style:site-resources, '/css');
-declare variable $style:rest-path-to-images := concat($style:context, '/rest', $style:site-images);
+declare variable $style:rest-path-to-images := concat($style:rest-path-to-app, '/images');
 
  (: home = 1, apps = 2 :)
  declare function style:web-depth-in-site() as xs:integer {
@@ -70,8 +71,11 @@ declare function style:header()  as node()*  {
         } </div>
        
         <div id="banner">
-            <span id="logo"><a href="{$style:site-dashboard}/index.xq">
-            <img src="{$style:rest-path-to-images}/univ-richmond-logo.png" alt="Boatwright Memoria Library"/></a></span>   
+            <span id="logo">
+               <a href="{$style:site-dashboard}/index.xq">
+                 <img src="{$style:site-images}/icon.png" height="50px" width="50px" alt="Call Graph App"/>
+              </a>
+           </span>   
             
             <span id="banner-header-text">Kelly-McCreary &amp; Associates</span>
             
